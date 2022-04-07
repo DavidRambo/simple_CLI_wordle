@@ -1,0 +1,9 @@
+#+title: Simple Wordle for Terminal
+
+Play wordle on the command line.
+
+It still needs a dictionary implementation.
+I intend to first access Ubuntu's built-in dictionary, and later I will add a module that sources Scrabble's dictionary.
+
+To run:
+~python3 wordle.py~
