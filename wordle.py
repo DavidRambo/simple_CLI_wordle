@@ -4,18 +4,12 @@ wordle.py"""
 import sys
 import wordle_functions
 
-# List of words
-word_list = ['could', 'train', 'wired', 'angle', 'count', 'found', 'moist',
-             'doubt', 'dread', 'bread', 'flame', 'skill']
-
-
 def wordle_game():
     '''Main game loop'''
     turn_count = 0  # start turn count at zero
 
     # First, randomly generate a word to be guessed.
-    # the_answer = wordle_functions.randomize_word(word_list)
-    the_answer = "skill"
+    the_answer = wordle_functions.randomize_word(words)
 
     # Now the game gets into its loop, which is controlled by two factors:
     # turn count and a correct guess.
@@ -35,5 +29,8 @@ def wordle_game():
 
     print("You ran out of guesses. The word was:", the_answer.upper())
 
+
+# Read dictionary to a list
+words = wordle_functions.load_dictionary()
 
 wordle_game()

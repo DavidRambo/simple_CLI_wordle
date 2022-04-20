@@ -2,6 +2,12 @@
 import random
 
 
+def load_dictionary() -> list:
+    with open('five_letter_words.txt', 'r') as f:
+        word_list = f.readlines()
+    return word_list
+
+
 def randomize_word(list_of_words: list) -> str:
     '''Randomly select word to be the answer'''
     return random.choice(list_of_words)
