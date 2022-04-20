@@ -2,8 +2,14 @@
 
 Play wordle on the command line.
 
-It still needs a dictionary implementation.
-I intend to first access Ubuntu's built-in dictionary, and later I will add a module that sources Scrabble's dictionary.
+The dictionary is derived from the Scrabble Dictionary: https://sourceforge.net/projects/scrabbledict/files/Scrabble%20Dictionary/0.91/
 
 To run:
 ~python3 wordle.py~
+
+
+### TODO
+I don't have immediate plans to update this version, as I think it would need a persistent display to accomplish more features.
+For one, it does not show eliminated letters.
+Listing them after each guess would work, but it would be messy.
+Painting the entire screen could work, but I would rather use a GUI library than remain in the command line.
