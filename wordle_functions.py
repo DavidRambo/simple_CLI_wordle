@@ -1,45 +1,47 @@
 """Functions to import for wordle.py game"""
-import random
+from random import choice
 
 
-def load_dictionary() -> list:
-    with open('five_letter_words.txt', 'r') as f:
-        word_list = f.readlines()
-    return word_list
+#def load_dictionary() -> list:
+#    with open('five_letter_words.txt', 'r') as f:
+#        word_list = f.readlines()
+#    return word_list
 
 
 def randomize_word(list_of_words: list) -> str:
     '''Randomly select word to be the answer'''
-    return random.choice(list_of_words)
+    return choice(list_of_words)
 
 
-def word_guess() -> str:
+def word_guess(all_words: list) -> str:
     '''Ask user to guess a word.'''
     # Ask user to guess a word and ensure it is all lowercase
     guess = input('Guess a five-letter word: ').lower()
-    # Error handling stuff
-    # guess = str()
 
     while len(guess) != 5 or not guess.isalpha():
         guess = input('Your word is not five letters long.\nGuess again: ')
+
+    while guess not in all_words:
+        guess = input('Not a valid word.\nGuess again: ')
+
     return guess.lower()
 
 
 def improved_check_function(guess: str, answer: str) -> str:
-    '''This should replicate Wordle's algorithm regarding duplicate letters'''
+    '''Check guess in a way that replicates Wordle's algorithm regarding
+    duplicate letters.'''
     result_letters = []
     result_positions = []
     display = []
     new_guess = []
     new_answer = []
-    # Turn the strings into lists of their constiuent characters.
+
+    # Turn the strings into lists of their constituent characters.
     guess_list = list(guess)
     answer_list = list(answer)
 
     for letter1, letter2 in zip(guess_list, answer_list):
         if letter1 == letter2:
-            # can also put the if statement into append()
-            # but I find that more difficult to read
             result_letters.append(letter1.upper())
             result_positions.append(guess_list.index(letter1))
             new_guess.append('?')

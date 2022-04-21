@@ -4,8 +4,13 @@ wordle.py"""
 import sys
 import wordle_functions
 
+
 def wordle_game():
     '''Main game loop'''
+    # Read dictionary to a list
+    with open('five_letter_words.txt', 'r') as f:
+        words = [line.rstrip() for line in f]
+
     turn_count = 0  # start turn count at zero
 
     # First, randomly generate a word to be guessed.
@@ -15,7 +20,8 @@ def wordle_game():
     # turn count and a correct guess.
     while turn_count < 6:
         # Ask for a guess word from the player.
-        the_guess = wordle_functions.word_guess()
+        # Pass the list of dictionary words.
+        the_guess = wordle_functions.word_guess(words)
 
         # Check for correct answer.
         if the_guess == the_answer:
@@ -31,6 +37,6 @@ def wordle_game():
 
 
 # Read dictionary to a list
-words = wordle_functions.load_dictionary()
+#words = wordle_functions.load_dictionary()
 
 wordle_game()
